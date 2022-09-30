@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.module.MovieDtoType;
 import com.example.backend.module.MovieType;
 import com.example.backend.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class MovieService {
@@ -24,4 +26,7 @@ public class MovieService {
     }
 
 
+    public MovieType addNewMovie(MovieDtoType postedMovie) {
+        return repo.addNewMovie(new MovieType(UUID.randomUUID(), postedMovie.getName(), postedMovie.getYear(), postedMovie.getImage()));
+    }
 }
