@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import { MovieDtotype } from "./MovieDtotype";
+import { MovieDtotype } from "../module/MovieDtotype";
 
 export default function useMovies() {
 

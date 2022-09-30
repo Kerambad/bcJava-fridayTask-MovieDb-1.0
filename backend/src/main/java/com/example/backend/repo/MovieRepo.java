@@ -41,4 +41,8 @@ public class MovieRepo {
         movieMap.put(postedMovieWithId.getId(),postedMovieWithId);
         return movieMap.get(temp);
     }
+
+    public MovieType deleteMovie(UUID key) {
+        return movieMap.remove(key);
+    }
 }

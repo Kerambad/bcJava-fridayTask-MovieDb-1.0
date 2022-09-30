@@ -29,4 +29,8 @@ public class MovieService {
     public MovieType addNewMovie(MovieDtoType postedMovie) {
         return repo.addNewMovie(new MovieType(UUID.randomUUID(), postedMovie.getName(), postedMovie.getYear(), postedMovie.getImage()));
     }
+
+    public MovieType deleteMovie(UUID key) {
+        return repo.deleteMovie(key);
+    }
 }

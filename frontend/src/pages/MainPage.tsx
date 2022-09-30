@@ -1,6 +1,6 @@
 import MovieGallery from "../components/MovieGallery";
 import {MovieType} from "../module/MovieType";
-import {MovieDtotype} from "../hooks/MovieDtotype";
+import {MovieDtotype} from "../module/MovieDtotype";
 import AddNewMovieForm from "../components/AddNewMovieForm";
 
 type mainPageProps = {

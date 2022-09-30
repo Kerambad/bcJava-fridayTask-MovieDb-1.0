@@ -1,0 +1,14 @@
+.movieElement {
+    background-color: aliceblue;
+
+    border: solid 1px;
+    border-radius: 3px;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 17rem;
+    flex-flow: column;
+
+    margin: 0.1em
+}
+

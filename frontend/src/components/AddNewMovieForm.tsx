@@ -1,5 +1,6 @@
 import {useState} from "react";
-import {MovieDtotype} from "../hooks/MovieDtotype";
+import {MovieDtotype} from "../module/MovieDtotype";
+import "./AddNewMovieForm.css"
 
 type AddNewMovieFormProps = {
     newMovie: (toAdd:MovieDtotype) => void
@@ -18,7 +19,9 @@ export default function AddNewMovieForm(props: AddNewMovieFormProps) {
 
     return (
     <>
-        <form onSubmit={(action) => {
+
+        <hr/>
+        <form className={"addMovieForm"} onSubmit={(action) => {
             action.preventDefault()
             props.newMovie(movie)
             setMovie(emptyMoviePlaceholder)

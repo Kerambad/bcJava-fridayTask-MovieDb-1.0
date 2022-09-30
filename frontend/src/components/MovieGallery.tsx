@@ -1,6 +1,6 @@
 import {MovieType} from "../module/MovieType";
 import MovieElement from "./MovieElement";
-import {useState} from "react";
+import "./MovieGallery.css"
 
 type MovieGalleryProps = {
     movies: MovieType[]
@@ -13,8 +13,8 @@ export default function MovieGallery(props: MovieGalleryProps) {
     }))
 
     return (
-    <>
+    <div className={"gallery"}>
         {outputMovies}
-    </>
+    </div>
     )
 }

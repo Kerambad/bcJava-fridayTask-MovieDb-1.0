@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/movies")
@@ -29,5 +30,9 @@ public class MovieController {
     @PostMapping
     public MovieType addNewMovie (@RequestBody MovieDtoType postedMovie) {
         return service.addNewMovie(postedMovie);
+    }
+    @DeleteMapping(path = "{id}")
+    public MovieType deleteMovie (@PathVariable UUID id) {
+        return service.deleteMovie(id);
     }
 }
