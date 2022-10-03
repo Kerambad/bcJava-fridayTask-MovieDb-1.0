@@ -6,12 +6,13 @@ import AddNewMovieForm from "../components/AddNewMovieForm";
 type mainPageProps = {
     movies: MovieType[]
     addMovies: (addMovieFunction: MovieDtotype) => void
+    delete: (deleteFunction:string) => void
 }
 export default function MainPage(props: mainPageProps) {
 
     return (
     <>
-        <MovieGallery movies={props.movies}/>
+        <MovieGallery movies={props.movies} delete={props.delete}/>
         <AddNewMovieForm newMovie={props.addMovies}/>
     </>
     )

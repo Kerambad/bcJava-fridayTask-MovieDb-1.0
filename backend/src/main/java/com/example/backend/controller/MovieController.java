@@ -32,7 +32,7 @@ public class MovieController {
         return service.addNewMovie(postedMovie);
     }
     @DeleteMapping(path = "{id}")
-    public MovieType deleteMovie (@PathVariable UUID id) {
+    public MovieType deleteMovie (@PathVariable String id) {
         return service.deleteMovie(id);
     }
 }

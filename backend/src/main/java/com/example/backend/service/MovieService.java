@@ -15,11 +15,15 @@ import java.util.UUID;
 public class MovieService {
 
     private final MovieRepo repo;
+    private final IdService idService;
 
     @Autowired
-    public MovieService(MovieRepo repo) {
+    public MovieService(MovieRepo repo, IdService idService) {
         this.repo = repo;
+        this.idService = idService;
     }
+
+
 
     public List<MovieType> getAllMovies() {
         return repo.getAllMovies();
@@ -27,10 +31,14 @@ public class MovieService {
 
 
     public MovieType addNewMovie(MovieDtoType postedMovie) {
-        return repo.addNewMovie(new MovieType(UUID.randomUUID(), postedMovie.getName(), postedMovie.getYear(), postedMovie.getImage()));
+        return repo.addNewMovie(new MovieType(
+                idService.getRandomId(),
+                postedMovie.getName(),
+                postedMovie.getYear(),
+                postedMovie.getImage()));
     }
 
-    public MovieType deleteMovie(UUID key) {
+    public MovieType deleteMovie(String key) {
         return repo.deleteMovie(key);
     }
 }

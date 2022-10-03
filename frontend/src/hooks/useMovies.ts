@@ -22,5 +22,11 @@ export default function useMovies() {
             .catch(() => console.error())
 
     }
-    return {movies, postNewMovie};
+    const deleteMovie = (id: string) => {
+        axios.delete("api/movies/" + id)
+            .then(getAllMovies)
+            .catch(() => console.error())
+    }
+
+    return {movies, postNewMovie, deleteMovie};
 }

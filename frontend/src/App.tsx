@@ -7,13 +7,13 @@ import useMovies from "./hooks/useMovies";
 
 function App() {
 
-    const {movies, postNewMovie} = useMovies();
+    const {movies, postNewMovie, deleteMovie} = useMovies();
 
     return (
         <div className="App">
             <HashRouter>
                 <Routes>
-                    <Route path={"/"} element={<MainPage movies={movies} addMovies={postNewMovie}/>}/>
+                    <Route path={"/"} element={<MainPage movies={movies} addMovies={postNewMovie} delete={deleteMovie}/>}/>
                 </Routes>
             </HashRouter>
         </div>

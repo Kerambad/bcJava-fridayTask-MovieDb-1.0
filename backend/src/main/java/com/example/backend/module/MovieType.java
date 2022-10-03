@@ -10,7 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieType {
-    UUID id;
+    String id;
     String name;
     int year;
     String image;
