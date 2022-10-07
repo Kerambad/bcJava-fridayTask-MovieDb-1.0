@@ -1,2 +1,3 @@
 /.idea/
-.github/deploydomenik.yml
+/.github/workflows/deploydomenik.yml
+/testfile
