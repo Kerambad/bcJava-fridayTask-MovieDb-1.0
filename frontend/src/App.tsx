@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {HashRouter, Route, Routes} from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import useMovies from "./hooks/useMovies";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const {movies, postNewMovie, deleteMovie} = useMovies();
+
+    return (
+        <div className="App">
+            <HashRouter>
+                <Routes>
+                    <Route path={"/"} element={<MainPage movies={movies} addMovies={postNewMovie} delete={deleteMovie}/>}/>
+                </Routes>
+            </HashRouter>
+        </div>
+    );
 }
 
 export default App;

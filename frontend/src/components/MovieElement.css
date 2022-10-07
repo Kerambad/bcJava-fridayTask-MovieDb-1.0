@@ -1,0 +1,32 @@
+.movieElement {
+    background-color: #a85555;
+
+    border: solid 1px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    margin: 0.1em;
+    width: 15rem;
+    height: 25rem;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.delete {
+    width: 2em;
+    height: 2em;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    align-self: stretch;
+    width: 240px;
+    height: 335px;
+}
+
+.title {
+    margin: -0.25em 0.5em 0.75em 0.5em;
+}
+
