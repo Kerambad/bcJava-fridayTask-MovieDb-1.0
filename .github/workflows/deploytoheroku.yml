@@ -48,7 +48,7 @@ jobs:
     needs: build-backend
     environment:
       name: InsaneMovieDB Deploy
-      url: test
+      url: "https://mareksmoviedb.herokuapp.com/"
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }} #currywurst?
     steps:
