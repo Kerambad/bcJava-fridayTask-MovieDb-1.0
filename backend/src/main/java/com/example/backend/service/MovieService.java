@@ -6,10 +6,7 @@ import com.example.backend.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class MovieService {
@@ -26,19 +23,20 @@ public class MovieService {
 
 
     public List<MovieType> getAllMovies() {
-        return repo.getAllMovies();
+        return repo.findAll();
     }
 
 
     public MovieType addNewMovie(MovieDtoType postedMovie) {
-        return repo.addNewMovie(new MovieType(
+        return repo.save(new MovieType(
                 idService.getRandomId(),
                 postedMovie.getName(),
                 postedMovie.getYear(),
                 postedMovie.getImage()));
     }
 
-    public MovieType deleteMovie(String key) {
-        return repo.deleteMovie(key);
+    public Optional<MovieType> deleteMovie(String key) {
+        repo.deleteById(key);
+        return repo.findById(key);
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.util.AssertionErrors.assertFalse;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -37,8 +38,8 @@ class MovieControllerIntegrationTest {
     @Test
     void getAllMovies() throws Exception {
         //GIVEN
-        repo.addNewMovie(new MovieType("1", "Forrest Gump", 1994, "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg?20180102220105"));
-        repo.addNewMovie(new MovieType("2", "New Kids Turbo", 2010, "https://upload.wikimedia.org/wikipedia/en/8/85/New_Kids_Turbo_poster.jpg?20200612000531"));
+        repo.save(new MovieType("1", "Forrest Gump", 1994, "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg?20180102220105"));
+        repo.save(new MovieType("2", "New Kids Turbo", 2010, "https://upload.wikimedia.org/wikipedia/en/8/85/New_Kids_Turbo_poster.jpg?20200612000531"));
 
         String expectedJSON = """
                 [
@@ -96,21 +97,12 @@ class MovieControllerIntegrationTest {
     @Test
     void deleteMovie() throws Exception {
         //GIVEN
-        repo.addNewMovie(new MovieType("1", "Forrest Gump", 1994, "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg?20180102220105"));
-        String expectedJSON = """
-                {
-                        "id": "1",
-                        "name": "Forrest Gump",
-                        "year": 1994,
-                        "image": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg?20180102220105"
-                    }
-                """;
+        repo.save(new MovieType("1", "Forrest Gump", 1994, "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg?20180102220105"));
         //WHEN
         mvc.perform(delete("/api/movies/1"))
-                .andExpect(status().isOk())
-                .andExpect(content().json(expectedJSON));
+                .andExpect(status().isOk());
         //THEN
-        assertEquals("[]", repo.getAllMovies().toString());
+        assertFalse("[]", repo.findById("1").isPresent());
     }
 
 }

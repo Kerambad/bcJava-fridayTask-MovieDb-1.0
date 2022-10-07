@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -32,7 +33,7 @@ public class MovieController {
         return service.addNewMovie(postedMovie);
     }
     @DeleteMapping(path = "{id}")
-    public MovieType deleteMovie (@PathVariable String id) {
+    public Optional<MovieType> deleteMovie (@PathVariable String id) {
         return service.deleteMovie(id);
     }
 }

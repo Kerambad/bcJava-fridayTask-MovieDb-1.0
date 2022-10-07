@@ -15,9 +15,8 @@ export default function MovieElement(props: MovieElementProps) {
     return (
     <div className={"movieElement"} >
         <button className={"delete"} onClick={() => props.delete(props.movie.id)}>X</button>
-        <h3>{props.movie.name}</h3>
-        <p>{displayYear()}</p>
-        <img src={props.movie.image} alt={"Poster of " + props.movie.name + "movie"}/>
+        <h3 className={"title"}>{props.movie.name} ({displayYear()})</h3>
+        <img className={"image"} src={props.movie.image} alt={"Poster of " + props.movie.name + "movie"}/>
     </div>
     )
 }
